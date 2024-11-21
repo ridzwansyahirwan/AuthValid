@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='TokenForge',
-    version='0.5',
+    version='0.6',
     packages=find_packages(),
     description='A package for JWT token management and authentication',
     author='Mohammad Ridzwan Syah bin Irwan',
