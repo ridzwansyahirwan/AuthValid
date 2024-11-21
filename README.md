@@ -9,7 +9,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Installation
 
 ```
-pip install TokenForge
+pip install AuthValid
 ```
 
 ## Authorization
