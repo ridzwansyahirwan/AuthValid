@@ -1,10 +1,8 @@
-# Auth Package
+# TokenForge
 
-A simple Python package for managing JWT tokens and authentication.
+A package for JWT token management and authentication.
 
 ## Installation
 
-To install the package, run:
-
 ```bash
-pip install .
+pip install TokenForge
