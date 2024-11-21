@@ -44,7 +44,7 @@ def generate_token(user_id, username, roles):
         'username': username,
         'roles': roles,
         'iat': datetime.now(timezone.utc),
-        'exp': datetime.now(timezone.utc) + timedelta(minutes=1)
+        'exp': datetime.now(timezone.utc) + timedelta(hours=1)
     }
     token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
     logging.info(f"New token generated: {token}")
