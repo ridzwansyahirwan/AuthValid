@@ -1,4 +1,4 @@
-# TokenForge
+# AuthValid
 
 A package for JWT token management and authentication.
 
