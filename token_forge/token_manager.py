@@ -11,7 +11,6 @@ logging.basicConfig(filename='app.log',
                     level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Load environment variables from .env file
 load_dotenv()
 
 def generate_secret_key():
@@ -29,7 +28,6 @@ def generate_token(user_id, username, roles):
         'user_id': user_id,
         'username': username,
         'roles': roles
-        # No expiration time
     }
     secret_key = set_secret_key()
     token = jwt.encode(payload, secret_key, algorithm='HS256')
