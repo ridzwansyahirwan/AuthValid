@@ -7,7 +7,7 @@ setup(
     description='A package for JWT token management and authentication',
     author='Mohammad Ridzwan Syah bin Irwan',
     author_email='ridzwansyahirwan@gmail.com',
-    url='',
+    url='https://github.com/ridzwansyahirwan/TokenForge.git',
     install_requires=[
         'Flask',
         'python-dotenv',
