@@ -16,12 +16,8 @@ load_dotenv()
 def generate_secret_key():
     return secrets.token_hex(32)
 
-def set_secret_key():
-    secret_key = os.getenv('SECRET_KEY')
-    if not secret_key:
-        secret_key = generate_secret_key()
-        set_key('.env', 'SECRET_KEY', secret_key)
-    return secret_key
+def set_secret_key(secret_key):
+    set_key('.env', 'SECRET_KEY', secret_key)
 
 def generate_token(user_id, username, roles):
     payload = {
@@ -29,7 +25,8 @@ def generate_token(user_id, username, roles):
         'username': username,
         'roles': roles
     }
-    secret_key = set_secret_key()
+    secret_key = generate_secret_key()
+    set_secret_key(secret_key)
     token = jwt.encode(payload, secret_key, algorithm='HS256')
     set_key('.env', 'AUTHORIZED_TOKEN', token)
     logging.info(f"Token generated for user: {username}")
@@ -40,7 +37,7 @@ def get_authorized_token():
 
 def refresh_token(token):
     try:
-        secret_key = set_secret_key()
+        secret_key = os.getenv('SECRET_KEY')
         decoded_token = jwt.decode(token, secret_key, algorithms=['HS256'], options={"verify_exp": False})
         new_token = generate_token(
             user_id=decoded_token['user_id'],
@@ -60,7 +57,7 @@ def authenticate_token(token):
         return False, None
 
     try:
-        secret_key = set_secret_key()
+        secret_key = os.getenv('SECRET_KEY')
         decoded_token = jwt.decode(token, secret_key, algorithms=['HS256'])
         logging.info("Token authenticated successfully")
         return True, decoded_token
